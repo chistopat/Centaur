@@ -28,13 +28,11 @@ class Serializer implements SerializerInterface
         $classMetaDataFactory = new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader()));
         $mataDataAwareNameConverter = new MetadataAwareNameConverter($classMetaDataFactory);
         $extractor = new PropertyInfoExtractor([], [new PhpDocExtractor(), new ReflectionExtractor()]);
-        $customNormalizer = new CustomNormalizer(
-            null, null, new PropertyAccessor(), $extractor
-        );
+
         return new SymfonySerializer(
             [
-                new ObjectNormalizer($classMetaDataFactory, $mataDataAwareNameConverter),
-                new ArrayDenormalizer(), $customNormalizer,
+                new ObjectNormalizer($classMetaDataFactory, $mataDataAwareNameConverter, null, $extractor),
+                new ArrayDenormalizer()
             ],
             [new JsonEncoder(), new YamlEncoder()]
         );

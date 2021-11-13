@@ -12,6 +12,7 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 #[AsCommand(
     name: 'centaur-cli',
@@ -20,11 +21,13 @@ use Symfony\Component\Serializer\SerializerInterface;
 class CentaurCliCommand extends Command
 {
     private SerializerInterface $serializer;
+    private ValidatorInterface $validator;
 
-    public function __construct(string $name = null)
+    public function __construct(ValidatorInterface $validator, string $name = null)
     {
         parent::__construct($name);
         $this->serializer = new Serializer();
+        $this->validator = $validator;
     }
 
     protected function configure(): void
@@ -42,6 +45,8 @@ class CentaurCliCommand extends Command
         /** @var OpenApiObject $apiSchema */
         $apiSchema = $this->serializer->deserialize($apiFile, OpenApiObject::class, Serializer::YAML);
         $io->writeln($apiSchema->getOpenapi());
+        dump($apiSchema->getInfo());
+        dump($this->validator->validate($apiSchema->getInfo()));
         return Command::SUCCESS;
     }
 }

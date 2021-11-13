@@ -2,6 +2,9 @@
 
 namespace App\Components\OpenApiSchema\Models;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
+
 class OpenApiObject
 {
     /**
@@ -9,33 +12,34 @@ class OpenApiObject
      */
     private string $openapi;
     /**
-     * @var array
+     * @var InfoObject | null
+     * @Assert\Valid
      */
-    private array $info; // todo: InfoObject // required
+    private ?InfoObject $info;
     /**
-     * @var array
+     * @var array | null
      */
-    private array $servers;
+    private ?array $servers;
     /**
      * @var array
      */
     private array $path; // required
     /**
-     * @var array
+     * @var array | null
      */
-    private array $components;
+    private ?array $components;
     /**
-     * @var array
+     * @var array | null
      */
-    private array $security;
+    private ?array $security;
     /**
-     * @var array
+     * @var array | null
      */
-    private array $tags;
+    private ?array $tags;
     /**
-     * @var array
+     * @var array | null
      */
-    private array $externalDocs;
+    private ?array $externalDocs;
 
     /**
      * @return string
@@ -54,33 +58,33 @@ class OpenApiObject
     }
 
     /**
-     * @return array
+     * @return InfoObject|null
      */
-    public function getInfo(): array
+    public function getInfo(): ?InfoObject
     {
         return $this->info;
     }
 
     /**
-     * @param array $info
+     * @param InfoObject|null $info
      */
-    public function setInfo(array $info): void
+    public function setInfo(?InfoObject $info): void
     {
         $this->info = $info;
     }
 
     /**
-     * @return array
+     * @return array|null
      */
-    public function getServers(): array
+    public function getServers(): ?array
     {
         return $this->servers;
     }
 
     /**
-     * @param array $servers
+     * @param array|null $servers
      */
-    public function setServers(array $servers): void
+    public function setServers(?array $servers): void
     {
         $this->servers = $servers;
     }
@@ -102,65 +106,65 @@ class OpenApiObject
     }
 
     /**
-     * @return array
+     * @return array|null
      */
-    public function getComponents(): array
+    public function getComponents(): ?array
     {
         return $this->components;
     }
 
     /**
-     * @param array $components
+     * @param array|null $components
      */
-    public function setComponents(array $components): void
+    public function setComponents(?array $components): void
     {
         $this->components = $components;
     }
 
     /**
-     * @return array
+     * @return array|null
      */
-    public function getSecurity(): array
+    public function getSecurity(): ?array
     {
         return $this->security;
     }
 
     /**
-     * @param array $security
+     * @param array|null $security
      */
-    public function setSecurity(array $security): void
+    public function setSecurity(?array $security): void
     {
         $this->security = $security;
     }
 
     /**
-     * @return array
+     * @return array|null
      */
-    public function getTags(): array
+    public function getTags(): ?array
     {
         return $this->tags;
     }
 
     /**
-     * @param array $tags
+     * @param array|null $tags
      */
-    public function setTags(array $tags): void
+    public function setTags(?array $tags): void
     {
         $this->tags = $tags;
     }
 
     /**
-     * @return array
+     * @return array|null
      */
-    public function getExternalDocs(): array
+    public function getExternalDocs(): ?array
     {
         return $this->externalDocs;
     }
 
     /**
-     * @param array $externalDocs
+     * @param array|null $externalDocs
      */
-    public function setExternalDocs(array $externalDocs): void
+    public function setExternalDocs(?array $externalDocs): void
     {
         $this->externalDocs = $externalDocs;
     }
