@@ -7,6 +7,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 class OpenApiObject
 {
+
     /**
      * @var string
      */
@@ -40,6 +41,28 @@ class OpenApiObject
      * @var array | null
      */
     private ?array $externalDocs;
+
+    /**
+     * @param string $openapi
+     * @param InfoObject|null $info
+     * @param array|null $servers
+     * @param array $path
+     * @param array|null $components
+     * @param array|null $security
+     * @param array|null $tags
+     * @param array|null $externalDocs
+     */
+    public function __construct(string $openapi, ?InfoObject $info, ?array $servers, array $path, ?array $components, ?array $security, ?array $tags, ?array $externalDocs)
+    {
+        $this->openapi = $openapi;
+        $this->info = $info;
+        $this->servers = $servers;
+        $this->path = $path;
+        $this->components = $components;
+        $this->security = $security;
+        $this->tags = $tags;
+        $this->externalDocs = $externalDocs;
+    }
 
     /**
      * @return string

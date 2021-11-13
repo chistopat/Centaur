@@ -2,6 +2,9 @@
 
 namespace App\Components\OpenApiSchema\Serializer;
 
+use App\Components\OpenApiSchema\Models\ContactObject;
+use App\Components\OpenApiSchema\Models\InfoObject;
+use App\Components\OpenApiSchema\Models\OpenApiObject;
 use Doctrine\Common\Annotations\AnnotationReader;
 use Symfony\Component\PropertyAccess\PropertyAccessor;
 use Symfony\Component\PropertyInfo\Extractor\PhpDocExtractor;
@@ -57,7 +60,7 @@ class Serializer implements SerializerInterface
      * @param array $context
      * @return mixed
      */
-    public function deserialize($data, string $type, string $format=Serializer::YAML, array $context = []): mixed
+    public function deserialize($data, string $type, string $format=Serializer::YAML, array $context = [])
     {
         return $this->serializer()->deserialize($data, $type, $format, $context);
     }

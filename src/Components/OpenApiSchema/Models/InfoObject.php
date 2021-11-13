@@ -17,6 +17,10 @@ class InfoObject
         $this->title = $title;
         $this->description = $description;
         $this->version = $version;
+        $this->license = null;
+        $this->contact = null;
+        $this->termsOfService = null;
+
     }
 
     /**
