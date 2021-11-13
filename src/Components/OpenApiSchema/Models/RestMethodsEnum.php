@@ -2,14 +2,14 @@
 
 namespace App\Components\OpenApiSchema\Models;
 
-enum RestMethodsEnum: string
+class RestMethodsEnum
 {
-    case Get = 'get';
-    case Put = 'put';
-    case Post = 'post';
-    case Delete = 'delete';
-    case Options = 'options';
-    case Head = 'head';
-    case Patch = 'patch';
-    case Trace = 'trace';
+    public const GET = 'get';
+    public const PUT = 'put';
+    public const POST = 'post';
+    public const DELETE = 'delete';
+    public const OPTIONS = 'options';
+    public const HEAD = 'head';
+    public const PATCH = 'patch';
+    public const TRACE = 'trace';
 }
