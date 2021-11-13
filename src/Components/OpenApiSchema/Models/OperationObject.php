@@ -32,9 +32,9 @@ class OperationObject
     private ?string $operationId;
 
     /**
-     * @var ParameterObject|ReferenceObject|null
+     * @var ParameterObject[] | null
      */
-    private ReferenceObject|ParameterObject|null $parameters;
+    private ?array $parameters;
 
     /**
      * @var RequestBodyObject|ReferenceObject|null
@@ -49,7 +49,7 @@ class OperationObject
     /**
      * @var ArrayObject<string, CallBackObject|ReferenceObject>|null
      */
-    private ?ArrayObject $callbacks;
+    private ?ArrayObject $callbacks; // todo: support later
 
     /**
      * @var bool|null
@@ -59,10 +59,10 @@ class OperationObject
     /**
      * @var SecurityRequirementObject|null
      */
-    private ?SecurityRequirementObject $security;
+    private ?SecurityRequirementObject $security; // todo: support later
 
     /**
-     * @var array|null
+     * @var ServerObject[]|null
      */
     private ?array $servers;
 
@@ -166,17 +166,17 @@ class OperationObject
     }
 
     /**
-     * @return ParameterObject|ReferenceObject|null
+     * @return ParameterObject[] | null
      */
-    public function getParameters(): ParameterObject|ReferenceObject|null
+    public function getParameters(): ?array
     {
         return $this->parameters;
     }
 
     /**
-     * @param ParameterObject|ReferenceObject|null $parameters
+     * @param ParameterObject[] | null $parameters
      */
-    public function setParameters(ParameterObject|ReferenceObject|null $parameters): void
+    public function setParameters(?array $parameters): void
     {
         $this->parameters = $parameters;
     }
@@ -262,7 +262,7 @@ class OperationObject
     }
 
     /**
-     * @return array|null
+     * @return ServerObject[]|null
      */
     public function getServers(): ?array
     {
@@ -270,7 +270,7 @@ class OperationObject
     }
 
     /**
-     * @param array|null $servers
+     * @param ServerObject[]|null $servers
      */
     public function setServers(?array $servers): void
     {

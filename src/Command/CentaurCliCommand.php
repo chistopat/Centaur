@@ -43,7 +43,7 @@ class CentaurCliCommand extends Command
         $io = new SymfonyStyle($input, $output);
         $apiFile = file_get_contents('__DIR__' . '../../doc/api.yaml');
         /** @var OpenApiObject $apiSchema */
-        $apiSchema = $this->serializer->deserialize($apiFile, OpenApiObject::class, Serializer::YAML);
+        $apiSchema = $this->serializer->deserialize($apiFile, OpenApiObject::class);
         $io->writeln($apiSchema->getOpenapi());
         dump($apiSchema);
         return Command::SUCCESS;

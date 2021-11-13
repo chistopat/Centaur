@@ -244,6 +244,7 @@ paths:
       parameters:
         - name: api_key
           in: header
+          required: false
           schema:
             type: string
         - name: petId

@@ -60,9 +60,9 @@ class PathItemObject
     private ?OperationObject $trace;
 
     /**
-     * @var ParameterObject|ReferenceObject|null
+     * @var ParameterObject[] | null
      */
-    private ReferenceObject|ParameterObject|null $parameters;
+    private ?array $parameters;
 
 
     public function __construct()
@@ -258,17 +258,17 @@ class PathItemObject
     }
 
     /**
-     * @return ParameterObject|ReferenceObject|null
+     * @return ParameterObject[] | null
      */
-    public function getParameters(): ParameterObject|ReferenceObject|null
+    public function getParameters(): ?array
     {
         return $this->parameters;
     }
 
     /**
-     * @param ParameterObject|ReferenceObject|null $parameters
+     * @param ParameterObject[] | null $parameters
      */
-    public function setParameters(ParameterObject|ReferenceObject|null $parameters): void
+    public function setParameters(?array $parameters): void
     {
         $this->parameters = $parameters;
     }
