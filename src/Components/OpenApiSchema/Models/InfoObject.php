@@ -45,9 +45,9 @@ class InfoObject
     private ?ContactObject $contact;
 
     /**
-     * @var array|null
+     * @var LicenseObject|null
      */
-    private ?array $license;
+    private ?LicenseObject $license;
 
     /**
      * @var string
@@ -119,7 +119,7 @@ class InfoObject
     }
 
     /**
-     * @return array|null
+     * @return LicenseObject|null
      */
     public function getLicense(): ?array
     {
@@ -127,9 +127,9 @@ class InfoObject
     }
 
     /**
-     * @param array|null $license
+     * @param LicenseObject|null $license
      */
-    public function setLicense(?array $license): void
+    public function setLicense(?LicenseObject $license): void
     {
         $this->license = $license;
     }

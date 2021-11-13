@@ -2,11 +2,7 @@
 
 namespace App\Components\OpenApiSchema\Serializer;
 
-use App\Components\OpenApiSchema\Models\ContactObject;
-use App\Components\OpenApiSchema\Models\InfoObject;
-use App\Components\OpenApiSchema\Models\OpenApiObject;
 use Doctrine\Common\Annotations\AnnotationReader;
-use Symfony\Component\PropertyAccess\PropertyAccessor;
 use Symfony\Component\PropertyInfo\Extractor\PhpDocExtractor;
 use Symfony\Component\PropertyInfo\Extractor\ReflectionExtractor;
 use Symfony\Component\PropertyInfo\PropertyInfoExtractor;
@@ -16,7 +12,6 @@ use Symfony\Component\Serializer\Mapping\Factory\ClassMetadataFactory;
 use Symfony\Component\Serializer\Mapping\Loader\AnnotationLoader;
 use Symfony\Component\Serializer\NameConverter\MetadataAwareNameConverter;
 use Symfony\Component\Serializer\Normalizer\ArrayDenormalizer;
-use Symfony\Component\Serializer\Normalizer\CustomNormalizer;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Serializer\Serializer as SymfonySerializer;

@@ -24,7 +24,7 @@ class OpenApiObject
     /**
      * @var array
      */
-    private array $path; // required
+    private array $paths; // required
     /**
      * @var array | null
      */
@@ -46,18 +46,18 @@ class OpenApiObject
      * @param string $openapi
      * @param InfoObject|null $info
      * @param array|null $servers
-     * @param array $path
+     * @param array $paths
      * @param array|null $components
      * @param array|null $security
      * @param array|null $tags
      * @param array|null $externalDocs
      */
-    public function __construct(string $openapi, ?InfoObject $info, ?array $servers, array $path, ?array $components, ?array $security, ?array $tags, ?array $externalDocs)
+    public function __construct(string $openapi, ?InfoObject $info, ?array $servers, array $paths, ?array $components, ?array $security, ?array $tags, ?array $externalDocs)
     {
         $this->openapi = $openapi;
         $this->info = $info;
         $this->servers = $servers;
-        $this->path = $path;
+        $this->paths = $paths;
         $this->components = $components;
         $this->security = $security;
         $this->tags = $tags;
@@ -115,17 +115,17 @@ class OpenApiObject
     /**
      * @return array
      */
-    public function getPath(): array
+    public function getPaths(): array
     {
-        return $this->path;
+        return $this->paths;
     }
 
     /**
-     * @param array $path
+     * @param array $paths
      */
-    public function setPath(array $path): void
+    public function setPaths(array $paths): void
     {
-        $this->path = $path;
+        $this->paths = $paths;
     }
 
     /**

@@ -45,8 +45,7 @@ class CentaurCliCommand extends Command
         /** @var OpenApiObject $apiSchema */
         $apiSchema = $this->serializer->deserialize($apiFile, OpenApiObject::class, Serializer::YAML);
         $io->writeln($apiSchema->getOpenapi());
-        dump($apiSchema->getInfo());
-        dump($this->validator->validate($apiSchema->getInfo()));
+        dump($apiSchema);
         return Command::SUCCESS;
     }
 }
