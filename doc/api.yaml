@@ -420,7 +420,7 @@ paths:
               $ref: '#/components/schemas/User'
         required: true
       responses:
-        default:
+        200:
           description: successful operation
           content: {}
       x-codegen-request-body-name: body
@@ -440,7 +440,7 @@ paths:
                 $ref: '#/components/schemas/User'
         required: true
       responses:
-        default:
+        200:
           description: successful operation
           content: {}
       x-codegen-request-body-name: body
@@ -460,7 +460,7 @@ paths:
                 $ref: '#/components/schemas/User'
         required: true
       responses:
-        default:
+        200:
           description: successful operation
           content: {}
       x-codegen-request-body-name: body
@@ -514,7 +514,7 @@ paths:
       summary: Logs out current logged in user session
       operationId: logoutUser
       responses:
-        default:
+        200:
           description: successful operation
           content: {}
   /user/{username}:

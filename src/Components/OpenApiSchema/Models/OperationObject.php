@@ -42,9 +42,9 @@ class OperationObject
     private RequestBodyObject|ReferenceObject|null $requestBody;
 
     /**
-     * @var ResponsesObject
+     * @var ArrayObject<int, ResponseObject> //todo: custom validator
      */
-    private ResponsesObject $responses;
+    private ArrayObject $responses;
 
     /**
      * @var ArrayObject<string, CallBackObject|ReferenceObject>|null
@@ -67,11 +67,11 @@ class OperationObject
     private ?array $servers;
 
     /**
-     * @param ResponsesObject $responses
+     * @param array $responses
      */
-    public function __construct(ResponsesObject $responses)
+    public function __construct(array $responses)
     {
-        $this->responses = $responses;
+        $this->responses = new ArrayObject($responses);
         $this->tags = null;
         $this->summary = null;
         $this->description = null;
@@ -198,19 +198,19 @@ class OperationObject
     }
 
     /**
-     * @return ResponsesObject
+     * @return ArrayObject<int, ResponseObject>
      */
-    public function getResponses(): ResponsesObject
+    public function getResponses(): ArrayObject
     {
         return $this->responses;
     }
 
     /**
-     * @param ResponsesObject $responses
+     * @param array $responses
      */
-    public function setResponses(ResponsesObject $responses): void
+    public function setResponses(array $responses): void
     {
-        $this->responses = $responses;
+        $this->responses = new ArrayObject($responses);
     }
 
     /**
