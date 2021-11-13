@@ -4,23 +4,27 @@ namespace App\Components\OpenApiSchema\Models;
 
 use Symfony\Component\Validator\Constraints as Assert;
 
-
 class OpenApiObject
 {
 
     /**
      * @var string
+     * @Assert\NotBlank
      */
     private string $openapi;
+
     /**
      * @var InfoObject | null
      * @Assert\Valid
      */
     private ?InfoObject $info;
+
     /**
-     * @var array | null
+     * @var ServerObject[]|null
+     * @Assert\Valid
      */
     private ?array $servers;
+
     /**
      * @var array
      */
@@ -45,18 +49,17 @@ class OpenApiObject
     /**
      * @param string $openapi
      * @param InfoObject|null $info
-     * @param array|null $servers
      * @param array $paths
      * @param array|null $components
      * @param array|null $security
      * @param array|null $tags
      * @param array|null $externalDocs
      */
-    public function __construct(string $openapi, ?InfoObject $info, ?array $servers, array $paths, ?array $components, ?array $security, ?array $tags, ?array $externalDocs)
+    public function __construct(string $openapi, ?InfoObject $info, array $paths, ?array $components, ?array $security, ?array $tags, ?array $externalDocs)
     {
         $this->openapi = $openapi;
         $this->info = $info;
-        $this->servers = $servers;
+        $this->servers = null;
         $this->paths = $paths;
         $this->components = $components;
         $this->security = $security;
@@ -97,7 +100,7 @@ class OpenApiObject
     }
 
     /**
-     * @return array|null
+     * @return ServerObject[]|null
      */
     public function getServers(): ?array
     {
@@ -105,7 +108,7 @@ class OpenApiObject
     }
 
     /**
-     * @param array|null $servers
+     * @param ServerObject[]|null $servers
      */
     public function setServers(?array $servers): void
     {

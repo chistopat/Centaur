@@ -25,16 +25,19 @@ class InfoObject
 
     /**
      * @var string
+     * @Assert\NotBlank
      */
     private string $title;
 
     /**
      * @var string
+     * @Assert\NotBlank
      */
     private string $description;
 
     /**
      * @var string|null
+     * @Assert\NotBlank
      */
     private ?string $termsOfService;
 
@@ -46,11 +49,14 @@ class InfoObject
 
     /**
      * @var LicenseObject|null
+     * @Assert\Valid
+
      */
     private ?LicenseObject $license;
 
     /**
      * @var string
+     * @Assert\NotBlank
      */
     private string $version;
 
