@@ -2,6 +2,7 @@
 
 namespace App\Components\OpenApiSchema\Models;
 
+use ArrayObject;
 use Symfony\Component\Validator\Constraints as Assert;
 
 class OpenApiObject
@@ -14,10 +15,10 @@ class OpenApiObject
     private string $openapi;
 
     /**
-     * @var InfoObject | null
+     * @var InfoObject
      * @Assert\Valid
      */
-    private ?InfoObject $info;
+    private InfoObject $info;
 
     /**
      * @var ServerObject[]|null
@@ -26,9 +27,11 @@ class OpenApiObject
     private ?array $servers;
 
     /**
-     * @var array
+     * @var ArrayObject<string, PathItemObject> // todo найти нормальный сопособ разбирать динамические поля
+     * // todo: кастомный валидатор слешей
+     * @Assert\Valid
      */
-    private array $paths; // required
+    private ArrayObject $paths; // required
     /**
      * @var array | null
      */
@@ -48,23 +51,19 @@ class OpenApiObject
 
     /**
      * @param string $openapi
-     * @param InfoObject|null $info
+     * @param InfoObject $info
      * @param array $paths
-     * @param array|null $components
-     * @param array|null $security
-     * @param array|null $tags
-     * @param array|null $externalDocs
      */
-    public function __construct(string $openapi, ?InfoObject $info, array $paths, ?array $components, ?array $security, ?array $tags, ?array $externalDocs)
+    public function __construct(string $openapi, InfoObject $info, array $paths)
     {
         $this->openapi = $openapi;
         $this->info = $info;
+        $this->paths = new ArrayObject($paths);
         $this->servers = null;
-        $this->paths = $paths;
-        $this->components = $components;
-        $this->security = $security;
-        $this->tags = $tags;
-        $this->externalDocs = $externalDocs;
+        $this->components = null;
+        $this->security = null;
+        $this->tags = null;
+        $this->externalDocs = null;
     }
 
     /**
@@ -116,19 +115,19 @@ class OpenApiObject
     }
 
     /**
-     * @return array
+     * @return ArrayObject<string, PathItemObject>
      */
-    public function getPaths(): array
+    public function getPaths(): ArrayObject
     {
         return $this->paths;
     }
 
     /**
-     * @param array $paths
+     * @param array<string, PathItemObject> $paths
      */
     public function setPaths(array $paths): void
     {
-        $this->paths = $paths;
+        $this->paths = new ArrayObject($paths);
     }
 
     /**
