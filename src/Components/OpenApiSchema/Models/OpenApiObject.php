@@ -40,7 +40,7 @@ class OpenApiObject
     /**
      * @var array | null
      */
-    private ?array $security;
+    private ?array $security; // todo: support later
 
     /**
      * @var TagObject[] | null
