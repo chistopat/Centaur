@@ -27,9 +27,8 @@ class OpenApiObject
     private ?array $servers;
 
     /**
-     * @var ArrayObject<string, PathItemObject> // todo найти нормальный сопособ разбирать динамические поля
-     * // todo: кастомный валидатор слешей
-     * @Assert\Valid
+     * @var ArrayObject<string, PathItemObject>
+     * @Assert\Valid // todo: кастомный валидатор слешей
      */
     private ArrayObject $paths; // required
     /**
