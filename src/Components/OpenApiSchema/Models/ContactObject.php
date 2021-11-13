@@ -6,13 +6,18 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 class ContactObject
 {
+
     /**
      * @var string|null
+     * @Assert\NotBlank
      */
     private ?string $name;
 
     /**
      * @var string|null
+     * @Assert\Url(
+     *     message = "The url '{{ value }}' is not valid string"
+     * )
      */
     private ?string $url;
 
@@ -23,6 +28,18 @@ class ContactObject
      * )
      */
     private ?string $email;
+
+    /**
+     * @param string|null $name
+     * @param string|null $url
+     * @param string|null $email
+     */
+    public function __construct(?string $name, ?string $url, ?string $email)
+    {
+        $this->name = $name;
+        $this->url = $url;
+        $this->email = $email;
+    }
 
     /**
      * @return string|null

@@ -21,7 +21,8 @@
         "symfony/yaml": "5.3.*"
     },
     "require-dev": {
-        "symfony/maker-bundle": "^1.35"
+        "symfony/maker-bundle": "^1.35",
+        "vimeo/psalm": "^4.12"
     },
     "config": {
         "optimize-autoloader": true,
