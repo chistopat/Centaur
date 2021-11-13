@@ -30,23 +30,27 @@ class OpenApiObject
      * @var ArrayObject<string, PathItemObject>
      * @Assert\Valid // todo: кастомный валидатор слешей
      */
-    private ArrayObject $paths; // required
+    private ArrayObject $paths;
+
     /**
      * @var array | null
      */
     private ?array $components;
+
     /**
      * @var array | null
      */
     private ?array $security;
+
     /**
-     * @var array | null
+     * @var TagObject[] | null
      */
     private ?array $tags;
+
     /**
-     * @var array | null
+     * @var ExternalDocsObject | null
      */
-    private ?array $externalDocs;
+    private ?ExternalDocsObject $externalDocs;
 
     /**
      * @param string $openapi
@@ -162,7 +166,7 @@ class OpenApiObject
     }
 
     /**
-     * @return array|null
+     * @return TagObject[]|null
      */
     public function getTags(): ?array
     {
@@ -170,7 +174,7 @@ class OpenApiObject
     }
 
     /**
-     * @param array|null $tags
+     * @param TagObject[]|null $tags
      */
     public function setTags(?array $tags): void
     {
@@ -178,7 +182,7 @@ class OpenApiObject
     }
 
     /**
-     * @return array|null
+     * @return ExternalDocsObject|null
      */
     public function getExternalDocs(): ?array
     {
@@ -186,9 +190,9 @@ class OpenApiObject
     }
 
     /**
-     * @param array|null $externalDocs
+     * @param ExternalDocsObject|null $externalDocs
      */
-    public function setExternalDocs(?array $externalDocs): void
+    public function setExternalDocs(?ExternalDocsObject $externalDocs): void
     {
         $this->externalDocs = $externalDocs;
     }

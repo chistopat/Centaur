@@ -41,7 +41,7 @@ class CentaurCliCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
-        $apiFile = file_get_contents('__DIR__' . '../../doc/openapi.yaml');
+        $apiFile = file_get_contents('__DIR__' . '../../doc/api.yaml');
         /** @var OpenApiObject $apiSchema */
         $apiSchema = $this->serializer->deserialize($apiFile, OpenApiObject::class, Serializer::YAML);
         $io->writeln($apiSchema->getOpenapi());
